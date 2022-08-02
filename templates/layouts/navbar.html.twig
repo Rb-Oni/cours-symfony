@@ -4,7 +4,7 @@
         <div class="flex flex-row justify-between">
             <div class="flex items-center">
                 <a class="font-bold text-2xl md:text-3xl xl:text-4xl uppercase py-2" aria-current="page"
-                    href="#">NAVBAR</a>
+                    href="{{ path('app_main') }}">NAVBAR</a>
             </div>
             <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
                 <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
@@ -19,7 +19,12 @@
         </div>
         <nav :class="{'flex': open, 'hidden': !open}"
             class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:flex-row md:justify-end font-bold text-2xl">
-            <a class="hover:text-redc focus:text-redc ease-in duration-150 md:mt-0 md:ml-4" href="#">ACCUEIL</a>
+            {% if app.user %}
+            <a class="text-red-500 md:mt-0 md:ml-4" href="{{ path('app_logout') }}">Logout</a>
+            {% else %}
+            <a class="md:mt-0 md:ml-4" href="{{ path('app_register') }}">Register</a>
+            <a class=" md:mt-0 md:ml-4" href="{{ path('app_login') }}">Login</a>
+            {% endif %}
         </nav>
     </div>
 </div>
