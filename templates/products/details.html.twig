@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }} details{% endblock %}
+
+{% block body %}
+
+<h1 class="text-3xl mb-3">{{ product.name }} details</h1>
+
+<div class="example-wrapper">
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at
+            <code><a href="{{ 'C:/laragon/www/cours-symfony/src/Controller/ProductsController.php'|file_link(0) }}">src/Controller/ProductsController.php</a></code>
+        </li>
+        <li>Your template at
+            <code><a href="{{ 'C:/laragon/www/cours-symfony/templates/products/index.html.twig'|file_link(0) }}">templates/products/index.html.twig</a></code>
+        </li>
+    </ul>
+</div>
+{% endblock %}
