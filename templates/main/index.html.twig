@@ -4,7 +4,27 @@
 
 {% block body %}
 
-<h1 class="text-6xl">Site e-commerce</h1>
-<p>Bienvenue dans notre boutique</p>
+<div class="container mx-auto my-16">
+
+    <section class="mb-8 text-center">
+        <h1 class="text-6xl">Site e-commerce</h1>
+        <p>Bienvenue dans notre boutique</p>
+    </section>
+
+    <section class="grid grid-cols-4 gap-4">
+        {% for category in categories %}
+
+        {% if category.parent == null %}
+        <div class="bg-blue-500 p-2 text-white">
+            <h2>{{ category.name }}</h2>
+        </div>
+        {% else %}
+        <a href="{{ path('app_categories_list', {slug: category.slug}) }}" class="bg-green-500 p-2 text-white">{{ category.name }}</a>
+        {% endif %}
+
+        {% endfor %}
+    </section>
+
+</div>
 
 {% endblock %}

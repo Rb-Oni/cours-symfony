@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of {{ category.name }}{% endblock %}
+
+{% block body %}
+
+<div class="container mx-auto my-16">
+
+    <section class="mb-8 text-center">
+        <h1 class="text-6xl">List of {{ category.name }}</h1>
+    </section>
+
+    <section class="flex flex-row gap-4">
+        {% for product in products %}
+
+        <div>
+            <h2 class="font-bold text-lg">{{ product.name }}</h2>
+            <p class="my-4">{{ product.description }}</p>
+            <a href="#" class="bg-orange-500 p-2 text-white">Voir les détails</a>
+        </div>
+
+        {% endfor %}
+    </section>
+
+</div>
+{% endblock %}

@@ -17,24 +17,25 @@ class CategoriesFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $parent = $this->createCategory('Informatique', null, $manager);
+        $parent = $this->createCategory('Informatique', null, 1, $manager);
 
-        $this->createCategory('Ordinateurs portables', $parent, $manager);
-        $this->createCategory('Ecrans', $parent, $manager);
-        $this->createCategory('Souris', $parent, $manager);
+        $this->createCategory('Ordinateurs portables', $parent, 3, $manager);
+        $this->createCategory('Ecrans', $parent, 2, $manager);
+        $this->createCategory('Souris', $parent, 4, $manager);
 
-        $parent = $this->createCategory('Mode', null, $manager);
+        $parent = $this->createCategory('Mode', null, 5, $manager);
 
-        $this->createCategory('Homme', $parent, $manager);
-        $this->createCategory('Femme', $parent, $manager);
-        $this->createCategory('Enfant', $parent, $manager);
+        $this->createCategory('Homme', $parent, 8, $manager);
+        $this->createCategory('Femme', $parent, 7, $manager);
+        $this->createCategory('Enfant', $parent, 6, $manager);
 
         $manager->flush();
     }
-    public function createCategory(string $name, Categories $parent = null, ObjectManager $manager)
+    public function createCategory(string $name, Categories $parent = null, int $categoryOrder, ObjectManager $manager)
     {
         $category = new Categories();
         $category->setName($name);
+        $category->setCategoryOrder($categoryOrder);
         $category->setSlug($this->slugger->slug($category->getName())->lower());
         $category->setParent($parent);
         $manager->persist($category);
